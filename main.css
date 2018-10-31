@@ -2,14 +2,14 @@ body
 {
   margin: 0;
   padding: 0;
-  height: 200vh;
+  height: 100vh;
   display: flex;
   justify-content: center;
   width: 100%;
 }
 .container
 {
-  position: absolute;
+  position: relative;
   width: 250px;
   height: 415px;
   background: rgba(0,0,0,0.1);
