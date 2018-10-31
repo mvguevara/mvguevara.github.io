@@ -9,7 +9,7 @@ body
 }
 .container
 {
-  position: relative;
+  position: center;
   width: 250px;
   height: 400px;
   background: rgba(0,0,0,0.1);
