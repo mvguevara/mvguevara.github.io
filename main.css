@@ -19,7 +19,7 @@ body
 .container img
 {
   position: absolute;
-  width: 100%:
+  width: 100%;
   transition: 0.5s;
 }
 .container: hover img:nth-child(4){
