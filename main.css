@@ -22,6 +22,20 @@ ul
   
 }
 
+ul li 
+{
+    list-style: none;
+  margin: 0 5px;
+}
+
+ul li a .fa
+{
+  font-size: 40px;
+  color: #333;
+  line-height: 80px;
+  transition: 0.5s;
+  padding-right: 14px;
+}
 
 .container
 {
