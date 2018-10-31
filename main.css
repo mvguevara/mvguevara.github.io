@@ -10,8 +10,8 @@ body
 .container
 {
   position: relative;
-  width: 250px;
-  height: 415px;
+  width: 125px;
+  height: 207px;
   background: rgba(0,0,0,0.1);
   transform: rotate(-30deg) skew(25deg);
   transition: 0.5s;
