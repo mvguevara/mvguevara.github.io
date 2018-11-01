@@ -1,7 +1,6 @@
 body 
 {
   font-family: sans-serif;
-  text-align: center;
   margin: 0;
   padding: 0;
   height: 100vh;
@@ -10,6 +9,12 @@ body
   justify-content: center;
   width: 100%;
 }
+
+h1
+{ position: absolute;
+  left: 50%;
+  top: 20%;
+  transform: translateX(-50%) translateY(-50%);
 
 ul
 {
