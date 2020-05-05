@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>MARTIN'S HUGE MISTAKE TURNED ART</title>
+    <title>Getting Started with ml5.js</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- p5 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
@@ -20,14 +20,14 @@ let skeleton;
 
 
 
-
 function setup() {
-  createCanvas(640, 480, WEBGL);
+  createCanvas(1080, 980, WEBGL);
   video = createCapture(VIDEO);
   video.hide();
   poseNet = ml5.poseNet(video, modelLoaded);
   poseNet.on('pose', gotPoses);
 }
+
 
 function gotPoses(poses) {
   //console.log(poses); 
@@ -45,7 +45,7 @@ function modelLoaded() {
 function draw() {
 	translate(-width/2, -height/2, 0);
   	
-  	image(video, 0, 0);
+  	image(video, 600, 100);
 
   if (pose) {
     let earR = pose.rightEar;
@@ -54,7 +54,7 @@ function draw() {
     
     strokeWeight(0);
     fill(255, 50, 100);
-    ellipse(pose.nose.x, pose.nose.y, d);
+    ellipse(pose.nose.x, pose.nose.y, d / 4);
     
     push();
     translate(pose.nose.x, pose.nose.y, d);
@@ -66,6 +66,7 @@ function draw() {
     box(100);
     
     pop();
+    
     //strokeWeight(0);
     //fill(25, 50, 100);
     //ellipse(pose.rightWrist.x, pose.rightWrist.y, d);
