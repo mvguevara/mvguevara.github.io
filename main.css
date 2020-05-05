@@ -1,9 +1,10 @@
 *
 {
 margin: 20px;
-padding:0;
+border: 10px
+padding:10px;
   @viewport{
-    zoom: 1.0;
+    zoom: 0;
     width: device-width;
 }
 }
