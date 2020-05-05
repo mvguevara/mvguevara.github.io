@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Getting Started with ml5.js</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- p5 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.sound.min.js"></script>
+    <!-- ml5 -->
+    <script src="https://unpkg.com/ml5@0.4.3/dist/ml5.min.js"></script>
+  </head>
+
+  <body>
+    <script>
+     let video;
+let poseNet;
+let pose;
+let skeleton;
+
+
+
+
+function setup() {
+  createCanvas(640, 480, WEBGL);
+  video = createCapture(VIDEO);
+  video.hide();
+  poseNet = ml5.poseNet(video, modelLoaded);
+  poseNet.on('pose', gotPoses);
+}
+
+function gotPoses(poses) {
+  //console.log(poses); 
+  if (poses.length > 0) {
+    pose = poses[0].pose;
+    //skeleton = poses[0].skeleton;
+  }
+}
+
+
+function modelLoaded() {
+  console.log('poseNet ready');
+}
+
+function draw() {
+	translate(-width/2, -height/2, 0);
+  	
+  	image(video, 0, 0);
+
+  if (pose) {
+    let earR = pose.rightEar;
+    let earL = pose.leftEar;
+    let d = dist(earL.x, earR.y, earL.x, earL.y);
+    
+    strokeWeight(0);
+    fill(255, 50, 100);
+    ellipse(pose.nose.x, pose.nose.y, d);
+    
+    push();
+    translate(pose.nose.x, pose.nose.y, d);
+    rotateZ(frameCount * 0.01);
+    rotateX(frameCount * 0.01);
+    rotateY(frameCount * 0.01);
+    
+   normalMaterial();
+    box(100);
+    
+    pop();
+    //strokeWeight(0);
+    //fill(25, 50, 100);
+    //ellipse(pose.rightWrist.x, pose.rightWrist.y, d);
+    //ellipse(pose.leftWrist.x, pose.leftWrist.y, d);
+    
+    //push();
+    
+    //translate(pose.rightWrist.x, pose.rightwrist.y, d);
+    //translate(pose.leftWrist.x, pose.lefttwrist.y, d);
+    //rotateZ(frameCount * 0.01);
+    //rotateX(frameCount * 0.01);
+    //rotateY(frameCount * 0.01);
+    
+    //normalMaterial();
+    //box(100);
+    
+    //pop();
+    
+    //for (let i = 0; i < pose.keypoints.length; i++) {
+      //let x = pose.keypoints[i].position.x;
+      //let y = pose.keypoints[i].position.y;
+      //fill(0,255,0);
+      //ellipse(x,y,16,16);
+    //}
+    
+    //for (let i = 0; i < skeleton.length; i++) {
+      //let a = skeleton[i][0];
+      //let b = skeleton[i][1];
+      //strokeWeight(2);
+      //stroke(255);
+      //line(a.position.x, a.position.y,b.position.x,b.position.y);      
+    //}
+    
+    
+  
+  
+  
+  }
+}
+    </script>
+  </body>
+</html>
